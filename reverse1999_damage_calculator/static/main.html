@@ -9,7 +9,7 @@
   <body>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 
-<nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+<nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark" style="margin-bottom:20px">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Reverse1999 damage calculator</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
@@ -34,5 +34,62 @@
   </div>
 </nav>
 
+<div class="container">
+    <h1>방어력 계산기</h1>
+    <br>
+
+    주의사항
+    <br>
+    <li>치명타가 터지지 않은 데미지를 넣어야 합니다.</li>
+    <li>이글의 디버프 외 다른 디버프를 걸어서는 안됩니다.</li>
+
+    <br>
+    <br>
+<form method="post">
+
+    <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">스탯</th>
+      <th scope="col">이글</th>
+      <th scope="col">스탯</th>
+      <th scope="col">적</th>
+      <th scope="col" colspan="2">결과</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">공격</th>
+      <td><input type="number" class="form-control" name="atk" value="{{ req.atk }}">
+      <td>Otto</td>
+      <td>@mdo</td>
+      <td>방어력</td>
+      <td>{{ def }}</td>
+    </tr>
+    <tr>
+      <th scope="row">피해 보너스</th>
+      <td><input type="number" class="form-control" name="dmg" value="{{ req.dmg }}">
+      <td>Thornton</td>
+      <td>@fat</td>
+      <td>피해감면</td>
+      <td>{{ dmg_taken }}</td>
+    </tr>
+    <tr>
+      <th scope="row">의지' 마법위력</th>
+      <td><input type="number" class="form-control" name="spell" value="{{ req.spell }}">
+      <td>@twitter</td>
+    </tr>
+  <tr>
+      <th></th>
+      <td></td>
+      <td></td>
+      <td></td>
+  </tr>
+  </tbody>
+</table>
+<button type="submit" class="btn btn-primary">Calculate</button>
+</form>
+
+</div>
   </body>
 </html>
