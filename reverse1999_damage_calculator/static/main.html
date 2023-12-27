@@ -11,7 +11,7 @@
 
 <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark" style="margin-bottom:20px">
   <div class="container">
-    <a class="navbar-brand" href="#">Reverse1999 damage calculator</a>
+    <a class="navbar-brand" href="">Reverse1999 damage calculator</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -45,7 +45,7 @@
 
     <br>
     <br>
-<form method="post">
+<form method="post" class="was-validated">
 
     <table class="table">
   <thead>
@@ -58,18 +58,18 @@
   </thead>
   <tbody>
     <tr>
-      <th scope="row">공격*</th>
-      <td><input type="number" class="form-control" name="atk" value="{{ data.atk }}">
-      <td>피해감면 버프</td>
-      <td><input type="number" class="form-control" name="buff" value="{{ data.buff }}"></td>
-      <td>일반기술 데미지*</td>
-      <td><input type="number" class="form-control" name="norm_dmg" value="{{ data.norm_dmg }}">
+      <th scope="row"><label for="atk" class="form-label">공격*</label></th>
+      <td><input type="number" class="form-control" name="atk" value="{{ data.atk }}" id="atk" required>
+      <td><label for="buff" class="form-label">피해감면 버프</label></td>
+      <td><input type="number" class="form-control" name="buff" id="buff" value="{{ data.buff | default(0) }}"></td>
+      <td><label for="norm_dmg" class="form-label">일반기술 데미지*</label></td>
+      <td><input type="number" class="form-control" name="norm_dmg" id="norm_dmg" value="{{ data.norm_dmg }}" required>
       <td></td>
       <td></td>
     </tr>
     <tr>
-      <th scope="row">피해 보너스</th>
-      <td><input type="number" class="form-control" name="bonus" value="{{ data.bonus }}">
+      <th scope="row"><label for="bonus" class="form-label">피해 보너스</label></th>
+      <td><input type="number" class="form-control" name="bonus" id="bonus" value="{{ data.bonus | default(0) }}">
       <td>
         <label class="form-check-label" for="weakness">약화</label>
     </td>
@@ -78,14 +78,14 @@
           <input class="form-check-input" type="checkbox" role="switch" id="weakness" name="weakness" {% if data.weakness %} checked {% endif %}>
 </div>
       </td>
-      <td>관통공격 데미지*</td>
-      <td><input type="number" class="form-control" name="pen_dmg" value="{{ data.pen_dmg }}">
+      <td><label for="pen_dmg" class="form-label">관통공격 데미지*</label></td>
+      <td><input type="number" class="form-control" name="pen_dmg" id="pen_dmg" value="{{ data.pen_dmg }}" required>
       <td></td>
       <td></td>
     </tr>
     <tr>
-      <th scope="row">의지' 마법위력</th>
-      <td><input type="number" class="form-control" name="spell" value="{{ data.spell }}">
+      <th scope="row"><label for="spell" class="form-label">의지' 마법위력</label></th>
+      <td><input type="number" class="form-control" name="spell" id="spell" value="{{ data.spell | default(0) }}">
       <td>
         <label class="form-check-label" for="afflatus">영감 (x 1.3)</label>
     </td>
