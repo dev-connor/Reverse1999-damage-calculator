@@ -5,7 +5,13 @@ from fastapi import Form
 
 @dataclass
 class DEF:
-    atk: Optional[int] = Form()
-    dmg: Optional[int] = Form()
-    spell: Optional[int] = Form()
+    atk: int = Form()
+    bonus: int = Form()
+    spell: int = Form()
+    norm_dmg: int = Form()
+    pen_dmg: int = Form()
+    weakness: bool = Form(False)
+    afflatus: bool = Form(False)
+    buff: Optional[int] = Form()
+    portray: int = Form(0)
 

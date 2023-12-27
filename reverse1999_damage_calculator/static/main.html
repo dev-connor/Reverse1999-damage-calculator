@@ -3,14 +3,14 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
+    <title>Reverse1999 damage calculator</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
   </head>
   <body>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 
 <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark" style="margin-bottom:20px">
-  <div class="container-fluid">
+  <div class="container">
     <a class="navbar-brand" href="#">Reverse1999 damage calculator</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -18,13 +18,13 @@
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link active" aria-current="page" href="#">DEF</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Features</a>
+          <a class="nav-link" href="#">Damage</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Pricing</a>
+          <a class="nav-link" href="#">About</a>
         </li>
       </ul>
       <span class="navbar-text">
@@ -50,38 +50,60 @@
     <table class="table">
   <thead>
     <tr>
-      <th scope="col">스탯</th>
-      <th scope="col">이글</th>
-      <th scope="col">스탯</th>
-      <th scope="col">적</th>
+      <th scope="col" colspan="2">이글</th>
+      <th scope="col" colspan="2">적</th>
+      <th scope="col" colspan="2">데미지</th>
       <th scope="col" colspan="2">결과</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th scope="row">공격</th>
-      <td><input type="number" class="form-control" name="atk" value="{{ req.atk }}">
-      <td>Otto</td>
-      <td>@mdo</td>
+      <th scope="row">공격*</th>
+      <td><input type="number" class="form-control" name="atk" value="{{ data.atk }}">
+      <td>피해감면 버프</td>
+      <td><input type="number" class="form-control" name="buff" value="{{ data.buff }}"></td>
+      <td>일반기술 데미지*</td>
+      <td><input type="number" class="form-control" name="norm_dmg" value="{{ data.norm_dmg }}">
       <td>방어력</td>
       <td>{{ def }}</td>
     </tr>
     <tr>
       <th scope="row">피해 보너스</th>
-      <td><input type="number" class="form-control" name="dmg" value="{{ req.dmg }}">
-      <td>Thornton</td>
-      <td>@fat</td>
+      <td><input type="number" class="form-control" name="bonus" value="{{ data.bonus }}">
+      <td>
+        <label class="form-check-label" for="weakness">약화</label>
+    </td>
+      <td>
+          <div class="form-check form-switch">
+          <input class="form-check-input" type="checkbox" role="switch" id="weakness" name="weakness" {% if data.weakness %} checked {% endif %}>
+</div>
+      </td>
+      <td>관통공격 데미지*</td>
+      <td><input type="number" class="form-control" name="pen_dmg" value="{{ data.pen_dmg }}">
       <td>피해감면</td>
       <td>{{ dmg_taken }}</td>
     </tr>
     <tr>
       <th scope="row">의지' 마법위력</th>
-      <td><input type="number" class="form-control" name="spell" value="{{ req.spell }}">
-      <td>@twitter</td>
+      <td><input type="number" class="form-control" name="spell" value="{{ data.spell }}">
+      <td>
+        <label class="form-check-label" for="afflatus">영감 (x 1.3)</label>
+    </td>
+      <td>
+          <div class="form-check form-switch">
+          <input class="form-check-input" type="checkbox" role="switch" id="afflatus" name="afflatus" {% if data.afflatus %} checked {% endif %}>
+</div>
+      </td>
     </tr>
   <tr>
-      <th></th>
-      <td></td>
+      <th>형상</th>
+      <td>
+          <select class="form-select" multiple aria-label="Multiple select example" name="portray">
+          <option {% if data.portray == 0 %} selected {% endif %} value="0">0~1</option>
+          <option {% if data.portray == 1 %} selected {% endif %} value="1">2</option>
+          <option {% if data.portray == 2 %} selected {% endif %} value="2">3~5</option>
+        </select>
+      </td>
       <td></td>
       <td></td>
   </tr>
