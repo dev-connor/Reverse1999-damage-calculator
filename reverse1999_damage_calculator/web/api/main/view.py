@@ -1,5 +1,6 @@
 from fastapi import APIRouter, Request, Depends, Form
 from fastapi.templating import Jinja2Templates
+from fastapi.exceptions import RequestValidationError
 
 from reverse1999_damage_calculator.web.api.main.model import DEF
 
@@ -13,7 +14,7 @@ def main(request: Request):
         "main.html",
         {
             "request": request,
-            'data': DEF(bonus=0, spell=0, portray=0, buff=0),
+            'data': DEF(bonus=0, spell=0, portray=0, buff=0, weakness=False, afflatus=False),
         },
     )
 

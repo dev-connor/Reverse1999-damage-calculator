@@ -64,8 +64,8 @@
       <td><input type="number" class="form-control" name="buff" value="{{ data.buff }}"></td>
       <td>일반기술 데미지*</td>
       <td><input type="number" class="form-control" name="norm_dmg" value="{{ data.norm_dmg }}">
-      <td>방어력</td>
-      <td>{{ def }}</td>
+      <td></td>
+      <td></td>
     </tr>
     <tr>
       <th scope="row">피해 보너스</th>
@@ -80,8 +80,8 @@
       </td>
       <td>관통공격 데미지*</td>
       <td><input type="number" class="form-control" name="pen_dmg" value="{{ data.pen_dmg }}">
-      <td>피해감면</td>
-      <td>{{ dmg_taken }}</td>
+      <td></td>
+      <td></td>
     </tr>
     <tr>
       <th scope="row">의지' 마법위력</th>
@@ -94,6 +94,10 @@
           <input class="form-check-input" type="checkbox" role="switch" id="afflatus" name="afflatus" {% if data.afflatus %} checked {% endif %}>
 </div>
       </td>
+        <td></td>
+        <td></td>
+        <td>방어력</td>
+        <td>{{ def }}</td>
     </tr>
   <tr>
       <th>형상</th>
@@ -106,6 +110,10 @@
       </td>
       <td></td>
       <td></td>
+      <td></td>
+      <td></td>
+      <td>피해감면</td>
+      <td>{{ dmg_taken }}</td>
   </tr>
   </tbody>
 </table>
