@@ -3,7 +3,7 @@ from importlib import metadata
 from fastapi import FastAPI
 from fastapi.responses import UJSONResponse
 
-from reverse1999_damage_calculator.web.api.router import api_router, static_router
+from reverse1999_damage_calculator.web.api.router import api_router, view_router
 from reverse1999_damage_calculator.web.lifetime import (
     register_shutdown_event,
     register_startup_event,
@@ -33,6 +33,6 @@ def get_app() -> FastAPI:
 
     # Main router for the API.
     app.include_router(router=api_router, prefix="/api")
-    app.include_router(router=static_router, prefix="")
+    app.include_router(router=view_router, prefix="")
 
     return app
