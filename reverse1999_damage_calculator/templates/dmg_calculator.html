@@ -4,8 +4,85 @@
 
 <div class="container">
     <h1>데미지 계산기</h1>
+    <br>
+    <br>
+<form method="post" class="was-validated">
+    <br>
+    <br>
+    <br>
 
-
-</div>
+    <table class="table">
+  <thead>
+    <tr>
+      <th scope="col" colspan="2">아군</th>
+      <th scope="col" colspan="2">적군</th>
+      <th scope="col" colspan="2">환경</th>
+      <th scope="col" colspan="2">결과</th>
+    </tr>
+  </thead>
+  <tbody>
+<!--  1-->
+<tr>
+    {{ input('공격력*','atk',data.atk,True) }}
+    {{ input('방어력*','defence',data.defence,True) }}
+    {{ input('방어감소','def_redn',data.def_redn) }}
+</tr>
+<!--  2-->
+<tr>
+    {{ input('위력*','power',data.power,True) }}
+    {{ input('피해감면*','dmg_taken',data.dmg_taken,True) }}
+    {{ input('피해보너스 버프','buff',data.buff) }}
+</tr>
+<!--  3-->
+<tr>
+    {{ input('스탯 피해보너스','stat_bonus',data.stat_bonus) }}
+    {{ switch('상성 (x 1.3)','afflatus',data.afflatus) }}
+    {{ input('피해감면 디버프','debuff',data.debuff) }}
+</tr>
+<!--  4-->
+<tr>
+    {{ input('특성 공격력','inherit_atk',data.inherit_atk) }}
+</tr>
+<!--  5-->
+<tr>
+    {{ input('특성 피해보너스','inherit_bonus',data.inherit_bonus) }}
+</tr>
+<!--  6-->
+<tr>
+    {{ input('의지 마법위력','spell',data.spell) }}
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    {{ value('데미지',dmg) }}
+</tr>
+  </tbody>
+</table>
+<button type="submit" class="btn btn-primary">Calculate</button>
+</form>
 
 {% endblock %}
+
+<!-- 입력 -->
+{% macro input(desc,name,v=0,require=None) %}
+      <th scope="row"><label for="{{name}}" class="form-label">{{desc}}</label></th>
+    <td><input type="number" class="form-control" name="{{name}}"  id="{{name}}" {% if require %}required{% endif %} value="{{v}}"></td>
+{% endmacro %}
+
+<!-- 값 -->
+{% macro value(desc,v=0) %}
+    <th>{{desc}}</th>
+    <td>{{v}}</td>
+{% endmacro %}
+
+<!-- 스위치 -->
+{% macro switch(title,name,b=None) %}
+      <th>
+        <label class="form-check-label" for="{{name}}">{{title}}</label>
+    </th>
+      <td>
+          <div class="form-check form-switch">
+          <input class="form-check-input" type="checkbox" role="switch" id="{{name}}" name="{{name}}" {% if b %} checked {% endif %}>
+        </div>
+      </td>
+{% endmacro %}

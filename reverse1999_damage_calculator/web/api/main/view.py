@@ -2,7 +2,7 @@ from fastapi import APIRouter, Request, Depends, Form
 from fastapi.templating import Jinja2Templates
 from fastapi.exceptions import RequestValidationError
 
-from reverse1999_damage_calculator.web.api.main.model import DEF
+from reverse1999_damage_calculator.web.api.main.model import DEF,DMG
 
 router = APIRouter()
 templates = Jinja2Templates(directory="reverse1999_damage_calculator/templates/")
@@ -19,18 +19,57 @@ def main(request: Request):
         },
     )
 @router.get("/dmg-calculator")
-def main(request: Request):
+def dmg_main(request: Request):
 
     return templates.TemplateResponse(
         "dmg_calculator.html",
         {
             "request": request,
             "tag": 'dmg',
+            'data': DMG(afflatus=False),
+        },
+    )
+
+@router.post("/dmg-calculator")
+def dmg_calculator(request: Request, req: DMG = Depends()):
+    print(req)
+
+    atk = req.atk
+    power = req.power
+    stat_bonus = req.stat_bonus
+    inherit_atk = req.inherit_atk
+    inherit_bonus = req.inherit_bonus
+    spell = req.spell
+
+    # 적군
+    defence = req.defence
+    dmg_taken = req.dmg_taken
+
+    # 환경
+    def_redn = req.def_redn
+    buff = req.buff
+    debuff = req.debuff
+
+    afflatus = 1
+    if req.afflatus:
+        afflatus = 1.3
+
+    # (공격*(1+특성공격/100)-적군방어*(1-방어감소/100))*기술위력/100*(1+(특성 피해보너스+아군 스탯 피해보너스+적군 피해보너스-적군 피해감면-적군 스탯 피해감면)/100)*상성*(1+마법위력/100)
+    dmg = (atk*(1+inherit_atk/100)-defence*(1-def_redn/100))*power/100*(1+(inherit_bonus+stat_bonus+debuff-buff-dmg_taken)/100)*afflatus*(1+spell/100)
+    print(dmg)
+
+    return templates.TemplateResponse(
+        "dmg_calculator.html",
+        {
+            "request": request,
+            "data": req,
+            "tag": 'dmg',
+            "dmg": round(dmg),
         },
     )
 
 @router.get("/about")
-def main(request: Request):
+def about(request: Request):
 
     return templates.TemplateResponse(
         "about.html",
@@ -74,8 +113,9 @@ def def_calculator(request: Request, req: DEF = Depends()):
         "def_calculator.html",
         {
             "request": request,
+            'data': req,
+            "tag": 'def',
             "def": round(defence),
             "dmg_taken": round(dmg_taken),
-            'data': req,
         },
     )
