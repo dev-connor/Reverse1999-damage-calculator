@@ -38,11 +38,11 @@ class Settings(BaseSettings):
 
     log_level: LogLevel = LogLevel.INFO
 
-    # model_config = SettingsConfigDict(
-    #     env_file=".env",
-    #     env_prefix="REVERSE1999_DAMAGE_CALCULATOR_",
-    #     env_file_encoding="utf-8",
-    # )
+    model_config = SettingsConfigDict(
+        env_file=".env",
+        env_prefix="REVERSE1999_DAMAGE_CALCULATOR_",
+        env_file_encoding="utf-8",
+    )
 
 
 settings = Settings()

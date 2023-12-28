@@ -17,6 +17,9 @@ RUN poetry install --only main
 COPY . /app/src/
 RUN poetry install --only main
 
+# Create .env file
+RUN echo "REVERSE1999_DAMAGE_CALCULATOR_RELOAD=True" > /app/src/.env
+
 CMD ["/usr/local/bin/python", "-m", "reverse1999_damage_calculator"]
 
 FROM prod as dev
