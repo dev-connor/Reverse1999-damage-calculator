@@ -5,9 +5,9 @@
 <div class="container">
     <h1>방어력 계산기</h1>
     <br>
-
-    주의사항
     <br>
+
+    <h4>주의사항</h4>
     <li>치명타가 터지지 않은 데미지를 넣어야 합니다.</li>
     <li>이글의 디버프 외 다른 디버프를 걸어서는 안됩니다.</li>
 
@@ -28,25 +28,23 @@
     <tr>
       <th scope="row"><label for="atk" class="form-label">공격*</label></th>
       <td><input type="number" class="form-control" name="atk" value="{{ data.atk }}" id="atk" required>
-      <td><label for="buff" class="form-label">피해감면 버프</label></td>
+      <th><label for="buff" class="form-label">피해감면 버프</label></th>
       <td><input type="number" class="form-control" name="buff" id="buff" value="{{ data.buff | default(0) }}"></td>
-      <td><label for="norm_dmg" class="form-label">일반기술 데미지*</label></td>
+      <th><label for="norm_dmg" class="form-label">일반기술 데미지*</label></th>
       <td><input type="number" class="form-control" name="norm_dmg" id="norm_dmg" value="{{ data.norm_dmg }}" required>
-      <td></td>
-      <td></td>
     </tr>
     <tr>
       <th scope="row"><label for="bonus" class="form-label">피해 보너스</label></th>
       <td><input type="number" class="form-control" name="bonus" id="bonus" value="{{ data.bonus | default(0) }}">
-      <td>
+      <th>
         <label class="form-check-label" for="weakness">약화</label>
-    </td>
+    </th>
       <td>
           <div class="form-check form-switch">
           <input class="form-check-input" type="checkbox" role="switch" id="weakness" name="weakness" {% if data.weakness %} checked {% endif %}>
         </div>
       </td>
-      <td><label for="pen_dmg" class="form-label">관통공격 데미지*</label></td>
+      <th><label for="pen_dmg" class="form-label">관통공격 데미지*</label></th>
       <td><input type="number" class="form-control" name="pen_dmg" id="pen_dmg" value="{{ data.pen_dmg }}" required>
       <td></td>
       <td></td>
@@ -54,9 +52,9 @@
     <tr>
       <th scope="row"><label for="spell" class="form-label">의지' 마법위력</label></th>
       <td><input type="number" class="form-control" name="spell" id="spell" value="{{ data.spell | default(0) }}">
-      <td>
+      <th>
         <label class="form-check-label" for="afflatus">영감 (x 1.3)</label>
-    </td>
+    </th>
       <td>
           <div class="form-check form-switch">
           <input class="form-check-input" type="checkbox" role="switch" id="afflatus" name="afflatus" {% if data.afflatus %} checked {% endif %}>
