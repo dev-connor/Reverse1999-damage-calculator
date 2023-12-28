@@ -52,7 +52,7 @@ reverse1999_damage_calculator
 ├── __main__.py  # Startup script. Starts uvicorn.
 ├── services  # Package for different external services such as rabbit or redis etc.
 ├── settings.py  # Main configuration settings for project.
-├── static  # Static content.
+├── templates  # Static content.
 ├── tests  # Tests for project.
 └── web  # Package contains web server. Handlers, startup config.
     ├── api  # Package with all handlers.
