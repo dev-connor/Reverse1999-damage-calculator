@@ -30,7 +30,7 @@ def get_app() -> FastAPI:
         default_response_class=UJSONResponse,
     )
 
-    app.mount("/static", StaticFiles(directory="reverse1999_damage_calculator/static/"), name="static")
+    app.mount("/templates", StaticFiles(directory="reverse1999_damage_calculator/templates/"), name="templates")
 
     # Adds startup and shutdown events.
     register_startup_event(app)

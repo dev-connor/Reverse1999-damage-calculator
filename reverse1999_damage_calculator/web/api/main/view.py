@@ -5,16 +5,38 @@ from fastapi.exceptions import RequestValidationError
 from reverse1999_damage_calculator.web.api.main.model import DEF
 
 router = APIRouter()
-templates = Jinja2Templates(directory="reverse1999_damage_calculator/static/")
+templates = Jinja2Templates(directory="reverse1999_damage_calculator/templates/")
 
 @router.get("/")
 def main(request: Request):
 
     return templates.TemplateResponse(
-        "main.html",
+        "def_calculator.html",
         {
             "request": request,
+            "tag": 'def',
             'data': DEF(bonus=0, spell=0, portray=0, buff=0, weakness=False, afflatus=False),
+        },
+    )
+@router.get("/dmg-calculator")
+def main(request: Request):
+
+    return templates.TemplateResponse(
+        "dmg_calculator.html",
+        {
+            "request": request,
+            "tag": 'dmg',
+        },
+    )
+
+@router.get("/about")
+def main(request: Request):
+
+    return templates.TemplateResponse(
+        "about.html",
+        {
+            "request": request,
+            "tag": 'about',
         },
     )
 
@@ -49,7 +71,7 @@ def def_calculator(request: Request, req: DEF = Depends()):
     dmg_taken = ((1-norm_dmg/((atk-defence*(1-def_redn/100))*(norm_pow/100)*(1+spell/100))+bonus/100-buff/100)*100)
 
     return templates.TemplateResponse(
-        "main.html",
+        "def_calculator.html",
         {
             "request": request,
             "def": round(defence),
