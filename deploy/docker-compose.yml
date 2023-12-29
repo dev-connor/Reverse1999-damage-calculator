@@ -6,7 +6,7 @@ services:
     - "8000:8000"
     build:
       context: .
-      dockerfile: ./deploy/Dockerfile
+      dockerfile: ./Dockerfile
       target: prod
 #    image: reverse1999_damage_calculator:${REVERSE1999_DAMAGE_CALCULATOR_VERSION:-latest}
     image: reverse1999_damage_calculator
