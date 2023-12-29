@@ -6,7 +6,8 @@ from fastapi import Form
 @dataclass
 class DEF:
     atk: int = Form()
-    bonus: int = Form(0)
+    stat_bonus: float = Form(0)
+    psy_bonus: float = Form(0)
     spell: int = Form(0)
     norm_dmg: int = Form()
     pen_dmg: int = Form()
@@ -20,9 +21,9 @@ class DMG:
     # 아군
     atk: int = Form(0)
     power: int = Form(0)
-    stat_bonus: int = Form(0)
+    stat_bonus: float = Form(0)
     inherit_atk: int = Form(0)
-    inherit_bonus: int = Form(0)
+    inherit_bonus: float = Form(0)
     spell: int = Form(0)
 
     # 적군
