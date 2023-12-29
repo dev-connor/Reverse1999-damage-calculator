@@ -27,42 +27,42 @@
   <tbody>
     <tr>
       <th scope="row"><label for="atk" class="form-label">공격*</label></th>
-      <td><input type="number" class="form-control" name="atk" value="{{ data.atk }}" id="atk" required>
+      <td><input type="number" class="form-control" name="atk" value="{{ data.atk }}" id="atk" required tabindex="1">
       <th><label for="buff" class="form-label">피해감면 버프</label></th>
-      <td><input type="number" class="form-control" name="buff" id="buff" value="{{ data.buff | default(0) }}"></td>
+      <td><input type="number" class="form-control" name="buff" id="buff" value="{{ data.buff | default(0) }}" tabindex="6"></td>
       <th><label for="norm_dmg" class="form-label">일반기술 데미지*</label></th>
-      <td><input type="number" class="form-control" name="norm_dmg" id="norm_dmg" value="{{ data.norm_dmg }}" required>
+      <td><input type="number" class="form-control" name="norm_dmg" id="norm_dmg" value="{{ data.norm_dmg }}" required tabindex="9">
     </tr>
     <tr>
       <th scope="row"><label for="stat_bonus" class="form-label">스탯 피해보너스</label></th>
-      <td><input type="number" class="form-control" name="stat_bonus" id="stat_bonus" value="{{ data.stat_bonus | default(0) }}">
+      <td><input type="number" class="form-control" name="stat_bonus" id="stat_bonus" value="{{ data.stat_bonus | default(0) }}" step="0.5" tabindex="2">
       <th>
         <label class="form-check-label" for="weakness">약점감지</label>
     </th>
       <td>
           <div class="form-check form-switch">
-          <input class="form-check-input" type="checkbox" role="switch" id="weakness" name="weakness" {% if data.weakness %} checked {% endif %}>
+          <input class="form-check-input" type="checkbox" role="switch" id="weakness" name="weakness" {% if data.weakness %} checked {% endif %} tabindex="7">
         </div>
       </td>
       <th><label for="pen_dmg" class="form-label">관통공격 데미지*</label></th>
-      <td><input type="number" class="form-control" name="pen_dmg" id="pen_dmg" value="{{ data.pen_dmg }}" required>
+      <td><input type="number" class="form-control" name="pen_dmg" id="pen_dmg" value="{{ data.pen_dmg }}" required tabindex="10">
       <td></td>
       <td></td>
     </tr>
     <tr>
       <th scope="row"><label for="psy_bonus" class="form-label">의지 피해보너스</label></th>
-      <td><input type="number" class="form-control" name="psy_bonus" id="psy_bonus" value="{{ data.psy_bonus | default(0) }}">
+      <td><input type="number" class="form-control" name="psy_bonus" id="psy_bonus" value="{{ data.psy_bonus | default(0) }}" step="0.5" tabindex="3">
   <th>
         <label class="form-check-label" for="afflatus">영감: 천체</label>
     </th>
       <td>
           <div class="form-check form-switch">
-          <input class="form-check-input" type="checkbox" role="switch" id="afflatus" name="afflatus" {% if data.afflatus %} checked {% endif %}>
+          <input class="form-check-input" type="checkbox" role="switch" id="afflatus" name="afflatus" {% if data.afflatus %} checked {% endif %} tabindex="8">
 </div>
     </tr>
     <tr>
       <th scope="row"><label for="spell" class="form-label">의지 마법위력</label></th>
-      <td><input type="number" class="form-control" name="spell" id="spell" value="{{ data.spell | default(0) }}">
+      <td><input type="number" class="form-control" name="spell" id="spell" value="{{ data.spell | default(0) }}" tabindex="4">
 <td></td>
         <td></td>
       </td>
@@ -74,7 +74,7 @@
   <tr>
       <th>형상</th>
       <td>
-          <select class="form-select" multiple aria-label="Multiple select example" name="portray">
+          <select class="form-select" multiple aria-label="Multiple select example" name="portray" tabindex="5">
           <option {% if data.portray == 0 %} selected {% endif %} value="0">0~1</option>
           <option {% if data.portray == 1 %} selected {% endif %} value="1">2</option>
           <option {% if data.portray == 2 %} selected {% endif %} value="2">3~5</option>
@@ -89,7 +89,7 @@
   </tr>
   </tbody>
 </table>
-<button type="submit" class="btn btn-primary">Calculate</button>
+<button type="submit" class="btn btn-primary" tabindex="11">Calculate</button>
 </form>
 
 </div>
