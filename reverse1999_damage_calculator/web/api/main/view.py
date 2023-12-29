@@ -15,7 +15,7 @@ def main(request: Request):
         {
             "request": request,
             "tag": 'def',
-            'data': DEF(bonus=0, spell=0, portray=0, buff=0, weakness=False, afflatus=False),
+            'data': DEF(stat_bonus=0, psy_bonus=0, spell=0, portray=0, buff=0, weakness=False, afflatus=False),
         },
     )
 @router.get("/dmg-calculator")
@@ -26,7 +26,7 @@ def dmg_main(request: Request):
         {
             "request": request,
             "tag": 'dmg',
-            'data': DMG(afflatus=False),
+            'data': DMG(afflatus=False, stat_bonus=0, inherit_atk=0, inherit_bonus=0, spell=0, def_redn=0, buff=0, debuff=0),
         },
     )
 
@@ -85,7 +85,8 @@ def def_calculator(request: Request, req: DEF = Depends()):
 
     atk = req.atk
     spell = req.spell
-    bonus = req.bonus
+    stat_bonus = req.stat_bonus
+    psy_bonus = req.psy_bonus
     norm_dmg = req.norm_dmg # 일반기술 데미지
     pen_dmg = req.pen_dmg # 방어무시기술 데미지
     buff = req.buff
@@ -107,7 +108,7 @@ def def_calculator(request: Request, req: DEF = Depends()):
     defence = (atk*(pen_dmg*norm_pow-norm_dmg*pen_pow))/(pen_dmg*norm_pow*(1-def_redn/100)-norm_dmg*pen_pow*(1-def_pen/100)*(1-def_redn/100))
 
     # ((1-일반기술 데미지/((공격력-방어력*(1-방어감소/100))*(일반기술위력/100)*(1+마법위력/100))+피해보너스/100-피해감면/100)*100)
-    dmg_taken = ((1-norm_dmg/((atk-defence*(1-def_redn/100))*(norm_pow/100)*(1+spell/100))+bonus/100-buff/100)*100)
+    dmg_taken = ((1-norm_dmg/((atk-defence*(1-def_redn/100))*(norm_pow/100)*(1+spell/100))+(stat_bonus+psy_bonus-buff)/100)*100)
 
     return templates.TemplateResponse(
         "def_calculator.html",

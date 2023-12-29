@@ -6,6 +6,10 @@
     <h1>데미지 계산기</h1>
     <br>
     <br>
+
+    <h4>주의사항</h4>
+    <li>방어력, 방어감소에는 현실방어와 정신방어를 구분해 넣습니다.</li>
+
 <form method="post" class="was-validated">
     <br>
     <br>
@@ -36,20 +40,20 @@
 <!--  3-->
 <tr>
     {{ input('스탯 피해보너스','stat_bonus',data.stat_bonus) }}
-    {{ switch('상성 (x 1.3)','afflatus',data.afflatus) }}
+    {{ switch('영감 (x 1.3)','afflatus',data.afflatus) }}
     {{ input('피해감면 디버프','debuff',data.debuff) }}
 </tr>
 <!--  4-->
 <tr>
-    {{ input('특성 공격력','inherit_atk',data.inherit_atk) }}
+    {{ input('통찰 공격력','inherit_atk',data.inherit_atk) }}
 </tr>
 <!--  5-->
 <tr>
-    {{ input('특성 피해보너스','inherit_bonus',data.inherit_bonus) }}
+    {{ input('통찰 피해보너스','inherit_bonus',data.inherit_bonus) }}
 </tr>
 <!--  6-->
 <tr>
-    {{ input('의지 마법위력','spell',data.spell) }}
+    {{ input('의지 마법위력 or 최종술식위력','spell',data.spell) }}
     <td></td>
     <td></td>
     <td></td>

@@ -34,10 +34,10 @@
       <td><input type="number" class="form-control" name="norm_dmg" id="norm_dmg" value="{{ data.norm_dmg }}" required>
     </tr>
     <tr>
-      <th scope="row"><label for="bonus" class="form-label">피해 보너스</label></th>
-      <td><input type="number" class="form-control" name="bonus" id="bonus" value="{{ data.bonus | default(0) }}">
+      <th scope="row"><label for="stat_bonus" class="form-label">스탯 피해보너스</label></th>
+      <td><input type="number" class="form-control" name="stat_bonus" id="stat_bonus" value="{{ data.stat_bonus | default(0) }}">
       <th>
-        <label class="form-check-label" for="weakness">약화</label>
+        <label class="form-check-label" for="weakness">약점감지</label>
     </th>
       <td>
           <div class="form-check form-switch">
@@ -50,19 +50,25 @@
       <td></td>
     </tr>
     <tr>
-      <th scope="row"><label for="spell" class="form-label">의지' 마법위력</label></th>
-      <td><input type="number" class="form-control" name="spell" id="spell" value="{{ data.spell | default(0) }}">
-      <th>
-        <label class="form-check-label" for="afflatus">영감 (x 1.3)</label>
+      <th scope="row"><label for="psy_bonus" class="form-label">의지 피해보너스</label></th>
+      <td><input type="number" class="form-control" name="psy_bonus" id="psy_bonus" value="{{ data.psy_bonus | default(0) }}">
+  <th>
+        <label class="form-check-label" for="afflatus">영감: 천체</label>
     </th>
       <td>
           <div class="form-check form-switch">
           <input class="form-check-input" type="checkbox" role="switch" id="afflatus" name="afflatus" {% if data.afflatus %} checked {% endif %}>
 </div>
+    </tr>
+    <tr>
+      <th scope="row"><label for="spell" class="form-label">의지 마법위력</label></th>
+      <td><input type="number" class="form-control" name="spell" id="spell" value="{{ data.spell | default(0) }}">
+<td></td>
+        <td></td>
       </td>
         <td></td>
         <td></td>
-        <td>현실방어</td>
+        <th>현실방어</th>
         <td>{{ def }}</td>
     </tr>
   <tr>
@@ -78,7 +84,7 @@
       <td></td>
       <td></td>
       <td></td>
-      <td>피해감면</td>
+      <th>피해감면</th>
       <td>{{ dmg_taken }}</td>
   </tr>
   </tbody>

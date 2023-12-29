@@ -6,7 +6,8 @@ from fastapi import Form
 @dataclass
 class DEF:
     atk: int = Form()
-    bonus: int = Form(0)
+    stat_bonus: int = Form(0)
+    psy_bonus: int = Form(0)
     spell: int = Form(0)
     norm_dmg: int = Form()
     pen_dmg: int = Form()
