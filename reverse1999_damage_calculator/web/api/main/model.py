@@ -25,6 +25,7 @@ class DMG:
     inherit_atk: int = Form(0)
     inherit_bonus: float = Form(0)
     spell: int = Form(0)
+    psy_bonus: float = Form(0)
 
     # 적군
     defence: int = Form(0)
