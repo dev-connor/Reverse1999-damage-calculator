@@ -11,6 +11,7 @@
     <h4>주의사항</h4>
     <b>
     <li>방어력, 방어감소에는 현실방어와 정신방어를 구분해 넣습니다.</li>
+    <li>오차가 10~20 정도 발생할 수 있습니다.</li>
         </b>
         </div>
 
@@ -32,22 +33,22 @@
 <!--  1-->
 <tr>
     {{ input('공격력*','atk',data.atk,1,True) }}
-    {{ input('방어력*','defence',data.defence,7,True) }}
-    {{ input('방어감소','def_redn',data.def_redn,10) }}
+    {{ input('방어력*','defence',data.defence,8,True) }}
+    {{ input('방어감소','def_redn',data.def_redn,11) }}
     <td colspan="2"></td>
 </tr>
 <!--  2-->
 <tr>
     {{ input('위력*','power',data.power,2,True) }}
-    {{ input('피해감면*','dmg_taken',data.dmg_taken,8,True) }}
-    {{ input('피해보너스 버프','buff',data.buff,11) }}
+    {{ input('피해감면*','dmg_taken',data.dmg_taken,9,True) }}
+    {{ input('피해보너스 버프','buff',data.buff,12) }}
     <td colspan="2"></td>
 </tr>
 <!--  3-->
 <tr>
     {{ input('스탯 피해보너스','stat_bonus',data.stat_bonus,3,float=True) }}
-    {{ switch('영감 (x 1.3)','afflatus',data.afflatus,9) }}
-    {{ input('피해감면 디버프','debuff',data.debuff,12) }}
+    {{ switch('영감 (x 1.3)','afflatus',data.afflatus,10) }}
+    {{ input('피해감면 디버프','debuff',data.debuff,13) }}
     <td colspan="2"></td>
 </tr>
 <!--  4-->
@@ -63,11 +64,13 @@
 <!--  6-->
 <tr>
     {{ input('의지 마법위력 or 최종술식위력','spell',data.spell,6) }}
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
+    <td colspan="6"></td>
+</tr>
+<!--  6-->
+    {{ input('의지 피해보너스','psy_bonus',data.psy_bonus,7,float=True) }}
+<td colspan="4"></td>
     {{ value('데미지',dmg) }}
+<tr>
 </tr>
   </tbody>
 </table>
