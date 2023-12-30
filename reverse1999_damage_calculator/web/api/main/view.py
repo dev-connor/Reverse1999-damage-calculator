@@ -26,7 +26,7 @@ def dmg_main(request: Request):
         {
             "request": request,
             "tag": 'dmg',
-            'data': DMG(afflatus=False, stat_bonus=0, inherit_atk=0, inherit_bonus=0, spell=0, def_redn=0, buff=0, debuff=0),
+            'data': DMG(afflatus=False, stat_bonus=0, inherit_atk=0, inherit_bonus=0, psy_bonus=0, spell=0, def_redn=0, buff=0, debuff=0),
         },
     )
 
@@ -40,6 +40,7 @@ def dmg_calculator(request: Request, req: DMG = Depends()):
     inherit_atk = req.inherit_atk
     inherit_bonus = req.inherit_bonus
     spell = req.spell
+    psy_bonus = req.psy_bonus
 
     # 적군
     defence = req.defence
@@ -55,7 +56,7 @@ def dmg_calculator(request: Request, req: DMG = Depends()):
         afflatus = 1.3
 
     # (공격*(1+특성공격/100)-적군방어*(1-방어감소/100))*기술위력/100*(1+(특성 피해보너스+아군 스탯 피해보너스+적군 피해보너스-적군 피해감면-적군 스탯 피해감면)/100)*상성*(1+마법위력/100)
-    dmg = (atk*(1+inherit_atk/100)-defence*(1-def_redn/100))*power/100*(1+(inherit_bonus+stat_bonus+debuff-buff-dmg_taken)/100)*afflatus*(1+spell/100)
+    dmg = (atk*(1+inherit_atk/100)-defence*(1-def_redn/100))*power/100*(1+(inherit_bonus+stat_bonus+psy_bonus+debuff-buff-dmg_taken)/100)*afflatus*(1+spell/100)
     print(dmg)
 
     return templates.TemplateResponse(
